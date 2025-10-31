@@ -1,4 +1,5 @@
 // src/components/About.tsx
+import cvUrl from "@/assets/cv/otman-raad-cv.pdf";
 import { useEffect } from "react";
 import {
   FaCss3Alt,
@@ -158,21 +159,11 @@ export default function About() {
 
             {/* Botones de CV */}
             <div className="about-ctas">
-            <div className="about-ctas">
-  <a
-    className="btn ghost"
-    href="/otman-raad-cv.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <a className="btn ghost" href={cvUrl} target="_blank" rel="noopener noreferrer">
     Ver CV
   </a>
 
-  <a
-    className="btn btn-cv"
-    href="/otman-raad-cv.pdf"
-    download="Otman-Raad-CV.pdf"
-  >
+  <a className="btn btn-cv" href={cvUrl} download="Otman-Raad-CV.pdf">
     Descargar CV
   </a>
 </div>

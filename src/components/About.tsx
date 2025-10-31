@@ -158,26 +158,24 @@ export default function About() {
 
             {/* Botones de CV */}
             <div className="about-ctas">
-              <a
-                className="btn ghost"
-                href="/CV-Otman-Raad.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiExternalLink style={{ marginRight: 6 }} />
-                Ver CV
-              </a>
+            <div className="about-ctas">
+  <a
+    className="btn ghost"
+    href="/otman-raad-cv.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Ver CV
+  </a>
 
-              <a className="btn btn-cv" href="/CV-Otman-Raad.pdf" download="CV-Otman-Raad.pdf">
-                <FiDownload style={{ marginRight: 6 }} />
-                Descargar CV
-              </a>
-
-              <a href="#contact" className="btn ghost">
-                <FiCheckCircle style={{ marginRight: 6 }} />
-                Contáctame
-              </a>
-            </div>
+  <a
+    className="btn btn-cv"
+    href="/otman-raad-cv.pdf"
+    download="Otman-Raad-CV.pdf"
+  >
+    Descargar CV
+  </a>
+</div>
 
             {/* Timeline */}
             <div className="about-timeline reveal">

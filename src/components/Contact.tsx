@@ -11,7 +11,7 @@ export default function Contact() {
   const [msg, setMsg] = useState("");
 
   // ⚠️ Sustituye por tu endpoint real de Formspree
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/XXXXXXX";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjkpalwj";
 
   // === REVEAL: observer + fallback para que siempre se vea ===
   useEffect(() => {
@@ -95,7 +95,7 @@ export default function Contact() {
               <FiMail className="info-ico" />
               <div>
                 <div className="info-label">Email</div>
-                <a className="info-link" href="mailto:otman@example.com">otman@example.com</a>
+                <a className="info-link" href="mailto:otman@example.com">otman.trader@gmail.com.com</a>
               </div>
             </div>
 

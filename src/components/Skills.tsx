@@ -1,4 +1,5 @@
 // src/components/Skills.tsx
+import type React from "react";
 import { useEffect } from "react";
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact,

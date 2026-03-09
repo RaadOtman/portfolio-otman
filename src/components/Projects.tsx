@@ -1,4 +1,4 @@
-// src/components/Projects.tsx
+
 import { useEffect, useMemo, useState } from "react";
 
 type Project = {
@@ -13,7 +13,7 @@ type Project = {
   featured?: boolean;
 };
 
-// 👉 Único proyecto publicado: tu propio portfolio
+
 const ALL_PROJECTS: Project[] = [
   {
     id: "portfolio",
@@ -28,15 +28,13 @@ const ALL_PROJECTS: Project[] = [
     featured: true,
   },
 ];
-
-// Si más adelante quieres mostrar “en preparación”, deja ALL_PROJECTS como [] y verás el estado vacío.
 const CATEGORIES = ["Todos", "Frontend", "Full Stack", "Otro"] as const;
 
 export default function Projects() {
   const [activeCat, setActiveCat] = useState<typeof CATEGORIES[number]>("Todos");
   const [q, setQ] = useState("");
 
-  // reveal on scroll (mismo patrón que en About/Contact)
+  
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#projects .reveal"));
     if (els.length === 0) return;
@@ -71,7 +69,6 @@ export default function Projects() {
     };
   }, []);
 
-  // Filtrado + búsqueda
   const filtered = useMemo(() => {
     const text = q.trim().toLowerCase();
     return ALL_PROJECTS.filter((p) => {
@@ -84,7 +81,7 @@ export default function Projects() {
     });
   }, [activeCat, q]);
 
-  // Conteo por categoría (para las chips)
+  
   const counts = useMemo(() => {
     const map: Record<typeof CATEGORIES[number], number> = {
       Todos: ALL_PROJECTS.length,
@@ -107,7 +104,7 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Filtros + búsqueda */}
+      
         <div className="filter-bar">
           <div className="filter-left">
             {CATEGORIES.map((cat) => (
@@ -126,7 +123,7 @@ export default function Projects() {
           <div className="filter-right">
             <div className="search-wrap">
               <span className="search-ico" aria-hidden>
-                {/* pequeño icono de lupa inline */}
+        
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M10 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm8.707 12.293-3.387-3.387A7.963 7.963 0 0 1 10 18a8 8 0 1 1 6.32-12.872l3.387 3.387a1 1 0 0 1 0 1.414l-1 1a1 1 0 0 1-1.414 0z" />
                 </svg>
@@ -140,7 +137,7 @@ export default function Projects() {
             </div>
             {q && (
               <button className="filter-chip clear" onClick={() => setQ("")} aria-label="Limpiar búsqueda">
-                {/* cruz */}
+                
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.9a1 1 0 0 0 1.41-1.41L13.41 12l4.9-4.89a1 1 0 0 0-.01-1.4z"/>
                 </svg>
@@ -150,9 +147,9 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Grid */}
+       
         {filtered.length === 0 ? (
-          // Estado vacío
+          
           <div className="card reveal" style={{ marginTop: 16, textAlign: "center", padding: 24 }}>
             <h3 style={{ marginTop: 0 }}>Próximamente</h3>
             <p style={{ color: "var(--muted)", marginBottom: 12 }}>

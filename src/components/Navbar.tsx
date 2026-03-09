@@ -24,13 +24,13 @@ export default function Navbar() {
   return (
     <nav className="nav" aria-label="Navegación principal">
       <div className="container nav-inner">
-        {/* Marca izquierda */}
+      
         <a href="#top" className="brand" aria-label="Ir al inicio">
           <span className="brand-text">Otman</span>
           <span className="brand-dot">dev.</span>
         </a>
 
-        {/* Hamburguesa */}
+        
         <button
           className="menu-toggle"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -44,7 +44,7 @@ export default function Navbar() {
           <span className={`bar ${open ? "open" : ""}`}></span>
         </button>
 
-        {/* Derecha */}
+        
         <div id="primary-navigation" className={`nav-right ${open ? "show" : ""}`}>
           <button className="btn btn-nav" onClick={scrollTop} type="button">Inicio</button>
           <ul className="nav-links" onClick={() => setOpen(false)}>

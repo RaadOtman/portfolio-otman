@@ -9,7 +9,7 @@ export default function Hero() {
   const dotRef = useRef<HTMLDivElement>(null);
   const shineRef = useRef<HTMLDivElement>(null);
 
-  // Scroll al contacto con highlight (como antes)
+  
   const goContact = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const section = document.querySelector<HTMLElement>("#contact");
@@ -41,21 +41,21 @@ export default function Hero() {
       const midX = r.width / 2;
       const midY = r.height / 2;
 
-      // normalizados (-1 a 1)
+      
       const nx = (x - midX) / midX;
       const ny = (y - midY) / midY;
 
-      // tilt
-      const rotX = (-ny * 10); // grados
+      
+      const rotX = (-ny * 10); 
       const rotY = (nx * 12);
 
       card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      // Parallax en Z
+     
       photo.style.transform = `translateZ(40px)`;
       ring.style.transform = `translateZ(20px) rotate(8deg)`;
       dot.style.transform = `translateZ(60px)`;
 
-      // Shine que sigue al cursor
+      
       shine.style.opacity = "1";
       shine.style.background = `radial-gradient(240px 240px at ${x}px ${y}px, rgba(255,255,255,.18), transparent 60%)`;
     };
@@ -75,7 +75,7 @@ export default function Hero() {
       shine.style.opacity = "0";
     };
 
-    // Desactivar en móvil / reduced motion
+    
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     const prefersReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isTouch || prefersReduce) return;

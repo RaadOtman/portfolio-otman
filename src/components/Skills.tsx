@@ -29,7 +29,7 @@ const toolChips = [
 ];
 
 export default function Skills() {
-  // Reveal-on-scroll para animar barras y tarjetas
+  
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>("#skills .reveal");
     const io = new IntersectionObserver((entries) => {
@@ -47,7 +47,7 @@ export default function Skills() {
   return (
     <section id="skills" className="section">
       <div className="container">
-        {/* Encabezado */}
+        
         <div className="skills-head">
           <span className="overline">Skills</span>
           <h2 className="skills-title">Tecnologías y herramientas</h2>
@@ -56,16 +56,16 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Grid principal */}
+        
         <div className="skills-grid">
-          {/* FRONTEND */}
+          
           <article className="skill-card reveal">
             <header className="skill-card-head">
               <div className="pill grad">Frontend</div>
               <p>Interfaces limpias, semántica, accesibilidad y rendimiento.</p>
             </header>
 
-            {/* Barras */}
+           
             <ul className="meter-list">
               {frontend.map((s) => (
                 <li key={s.label}>
@@ -89,7 +89,7 @@ export default function Skills() {
               ))}
             </ul>
 
-            {/* Chips con iconos */}
+           
             <div className="chips" style={{ marginTop: 12 }}>
               <span className="chip"><FaHtml5 color="#E34F26" /> HTML5</span>
               <span className="chip"><FaCss3Alt color="#1572B6" /> CSS3</span>
@@ -100,14 +100,14 @@ export default function Skills() {
             </div>
           </article>
 
-          {/* BACKEND & DB */}
+          
           <article className="skill-card reveal">
             <header className="skill-card-head">
               <div className="pill grad">Backend & DB</div>
               <p>APIs REST y persistencia de datos con SQL.</p>
             </header>
 
-            {/* Barras */}
+            
             <ul className="meter-list">
               {backend.map((s) => (
                 <li key={s.label}>
@@ -131,7 +131,7 @@ export default function Skills() {
               ))}
             </ul>
 
-            {/* Chips con iconos */}
+            
             <div className="chips" style={{ marginTop: 12 }}>
               <span className="chip"><FaNodeJs color="#68A063" /> Node.js</span>
               <span className="chip"><FaPhp color="#777BB4" /> PHP</span>
@@ -143,7 +143,7 @@ export default function Skills() {
           </article>
         </div>
 
-        {/* HERRAMIENTAS */}
+        
         <div className="tools-card card reveal">
           <div className="tools-head">
             <div className="pill soft"><FiTool /> Herramientas</div>

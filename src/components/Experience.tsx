@@ -7,7 +7,7 @@ import {
 import { FiTool, FiBriefcase, FiCode, FiLayers, FiServer, FiTrendingUp } from "react-icons/fi";
 
 export default function Experience() {
-  // Reveal on scroll con fallback (mismo patrón que About/Contact)
+  
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#experience .reveal"));
     if (els.length === 0) return;
@@ -48,7 +48,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section">
       <div className="container">
-        {/* Cabecera */}
+       
         <div className="reveal">
           <span className="overline">Experiencia</span>
           <h2 className="skills-title">Experiencia como Desarrollador Web</h2>
@@ -59,7 +59,7 @@ export default function Experience() {
           </p>
         </div>
 
-        {/* Matriz de tecnologías clave */}
+        
         <div className="skills-grid" style={{ marginTop: 20 }}>
           {/* Frontend */}
           <article className="skill-card reveal">
@@ -78,7 +78,7 @@ export default function Experience() {
             </div>
           </article>
 
-          {/* Backend */}
+          
           <article className="skill-card reveal">
             <header className="skill-card-head">
               <div className="pill grad"><FiServer /> Backend & Datos</div>
@@ -95,7 +95,7 @@ export default function Experience() {
           </article>
         </div>
 
-        {/* Herramientas & DevOps */}
+      
         <div className="tools-card card reveal" style={{ marginTop: 20 }}>
           <div className="tools-head">
             <div className="pill soft"><FiTool /> Herramientas</div>
@@ -111,9 +111,9 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Experiencia / Logros en formato tarjetas */}
+        
         <div className="projects-grid" style={{ marginTop: 22 }}>
-          {/* Portfolio */}
+          
           <article className="project-card reveal">
             <div className="project-body">
               <div className="project-title-row">
@@ -133,7 +133,7 @@ export default function Experience() {
             </div>
           </article>
 
-          {/* Prácticas DAW / Proyectos académicos */}
+          
           <article className="project-card reveal">
             <div className="project-body">
               <div className="project-title-row">
@@ -152,7 +152,7 @@ export default function Experience() {
             </div>
           </article>
 
-          {/* Hitos personales */}
+          
           <article className="project-card reveal">
             <div className="project-body">
               <div className="project-title-row">
@@ -172,7 +172,7 @@ export default function Experience() {
           </article>
         </div>
 
-        {/* Mini timeline (resumen cronológico) */}
+        
         <div className="about-timeline reveal" style={{ marginTop: 22 }}>
           <div className="tl-item">
             <div className="tl-period">2025</div>

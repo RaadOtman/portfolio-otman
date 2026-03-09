@@ -1,4 +1,4 @@
-// src/components/Contact.tsx
+
 import { useEffect, useState } from "react";
 import {
   FiMail, FiUser, FiMessageSquare, FiSend,
@@ -10,10 +10,9 @@ export default function Contact() {
   const [status, setStatus] = useState<"idle"|"sending"|"ok"|"error">("idle");
   const [msg, setMsg] = useState("");
 
-  // ⚠️ Sustituye por tu endpoint real de Formspree
+  
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjkpalwj";
 
-  // === REVEAL: observer + fallback para que siempre se vea ===
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#contact .reveal"));
     if (els.length === 0) return;
@@ -89,7 +88,6 @@ export default function Contact() {
         </div>
 
         <div className="contact-grid">
-          {/* Columna izquierda: info */}
           <aside className="contact-info card reveal">
             <div className="info-block">
               <FiMail className="info-ico" />
@@ -128,7 +126,7 @@ export default function Contact() {
             </div>
           </aside>
 
-          {/* Columna derecha: formulario */}
+          
           <div className="contact-form-wrap reveal">
             <div className="gradient-border">
               {status === "ok" ? (
@@ -147,7 +145,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} noValidate>
-                  {/* Honeypot antispam */}
+                  
                   <input type="text" name="_gotcha" style={{ display:"none" }} tabIndex={-1} aria-hidden="true" />
 
                   <div className="field">

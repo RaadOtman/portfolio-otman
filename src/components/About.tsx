@@ -61,20 +61,11 @@ export default function About() {
         {/* Encabezado */}
         <div className="reveal">
           <span className="overline">Sobre mí</span>
-          <h2 className="about-title">Conóceme un poco más</h2>
-          <p className="about-intro">
-            Soy un desarrollador web apasionado por la tecnología y la creación de soluciones
-            digitales que aporten valor real. A lo largo de mi formación en{" "}
-            <b>Desarrollo de Aplicaciones Web (DAW)</b>, he trabajado con lenguajes y herramientas
-            como <b>HTML, CSS, JavaScript, React, PHP, Node.js y MySQL</b>, desarrollando tanto la
-            parte visual como la lógica y la persistencia de datos de diferentes proyectos. Mi
-            experiencia previa como <b>gerente en restauración moderna</b> me ha permitido adquirir
-            competencias clave como la gestión de equipos, la organización, la toma de decisiones y
-            la orientación a resultados, habilidades que aplico ahora al desarrollo web con un
-            enfoque profesional y responsable. Busco mi{" "}
-            <b>primera oportunidad laboral como Desarrollador Web Junior</b>, en un entorno donde
-            pueda seguir creciendo, aprender de otros profesionales y contribuir al desarrollo de
-            proyectos reales que marquen la diferencia.
+          <h2 className="about-title">Desarrollo web con mentalidad de producto</h2>
+            <p className="about-intro">
+              Soy Otman Raad, desarrollador web junior formado en Desarrollo de Aplicaciones Web. Me centro en crear aplicaciones claras, funcionales y con una experiencia visual cuidada, combinando frontend, backend y bases de datos.
+              <br /><br />
+              Actualmente trabajo con React, TypeScript, Node.js y MySQL, y estoy construyendo proyectos como PADEX, Futbol Web App y sitios web orientados a clientes reales. Mi objetivo es seguir creciendo como desarrollador, aportar desde el primer día y aprender dentro de un equipo profesional.
           </p>
         </div>
 
@@ -143,18 +134,19 @@ export default function About() {
 
             {/* Estadísticas */}
             <div className="about-stats">
+             <div className="stat">
+              <div className="stat-num">3</div>
+              <div className="stat-label">Proyectos principales</div>
+            </div>
+
               <div className="stat">
-                <div className="stat-num">1+</div>
-                <div className="stat-label">Años de experiencia</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">1+</div>
-                <div className="stat-label">Proyectos web</div>
-              </div>
-              <div className="stat">
-                <div className="stat-num">∞</div>
-                <div className="stat-label">Ganas de aprender</div>
-              </div>
+              <div className="stat-num">Full Stack</div>
+               <div className="stat-label">Frontend + Backend</div>
+               </div>
+          <div className="stat">
+            <div className="stat-num">React</div>
+            <div className="stat-label">Stack principal</div>
+            </div>
             </div>
 
             {/* Botones de CV */}

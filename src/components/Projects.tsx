@@ -16,16 +16,49 @@ type Project = {
 
 const ALL_PROJECTS: Project[] = [
   {
+    id: "padex",
+    title: "PADEX — Plataforma de reservas deportivas",
+    desc:
+      "Aplicación full stack para la gestión y reserva de pistas de pádel. Incluye autenticación, panel de administración, gestión de clubes, usuarios, pistas y reservas.",
+    img: "/img/padex.jpg",
+    category: "Full Stack",
+    tech: ["React", "TypeScript", "Node.js", "Express", "MySQL", "JWT"],
+    liveUrl: "#",
+    codeUrl: "https://github.com/RaadOtman/proyecto-fin-grado",
+    featured: true,
+  },
+  {
+    id: "futbol-web-app",
+    title: "Futbol Web App",
+    desc:
+      "Aplicación de gestión deportiva desarrollada en un entorno enterprise con DataFlex y MySQL. Permite gestionar equipos, jugadores, entrenadores y datos relacionados.",
+    img: "/img/futbol-webapp.jpg",
+    category: "Otro",
+    tech: ["DataFlex", "MySQL", "WebApp", "CRUD", "Dashboard"],
+    liveUrl: "#",
+    codeUrl: "https://github.com/RaadOtman/futbol-web-app/tree/develop",
+  },
+  {
+    id: "peluqueria-web",
+    title: "Peluquería Web",
+    desc:
+      "Sitio web moderno para una peluquería, enfocado en diseño visual, experiencia móvil, presentación de servicios y contacto directo con el cliente.",
+    img: "/img/peluqueria.jpg",
+    category: "Frontend",
+    tech: ["React", "Vite", "CSS", "Responsive", "UX/UI"],
+    liveUrl: "https://mansour-tan.vercel.app/",
+    codeUrl: "https://github.com/RaadOtman/peluqueria-web",
+  },
+  {
     id: "portfolio",
     title: "Portfolio Personal — Otmandev",
     desc:
-      "Mi sitio personal desarrollado con React + TypeScript + Vite. Animaciones ‘reveal’, sección About con iconos reales, Skills con barras, Contact con Formspree y CV descargable.",
-    img: "/img/port.jpg", // pon esta imagen en public/img/
+      "Mi portfolio personal desarrollado con React, TypeScript y Vite, donde presento mis proyectos, tecnologías y evolución como desarrollador web.",
+    img: "/img/port.jpg",
     category: "Frontend",
-    tech: ["React", "TypeScript", "Vite", "CSS", "React Icons", "Formspree"],
-    liveUrl: "/",            // si ya está desplegado en Vercel, pon la URL completa
-    codeUrl: "https://github.com/tuusuario/tu-repo", // cambia por tu repo real
-    featured: true,
+    tech: ["React", "TypeScript", "Vite", "CSS"],
+    liveUrl: "/",
+    codeUrl: "#",
   },
 ];
 const CATEGORIES = ["Todos", "Frontend", "Full Stack", "Otro"] as const;
@@ -97,10 +130,12 @@ export default function Projects() {
       <div className="container">
         {/* Header */}
         <div className="projects-head">
-          <span className="overline">Proyectos</span>
-          <h2 className="projects-title">Lo que estoy construyendo</h2>
+          <span className="overline">Featured Work</span>
+          <h2 className="projects-title">
+                Aplicaciones reales, diseño moderno y desarrollo full stack
+          </h2>
           <p className="projects-intro">
-            De momento muestro mi <b>portfolio</b> como proyecto principal. El resto llegará muy pronto 😉.
+            Una selección de proyectos donde combino desarrollo web, bases de datos, interfaces modernas y aplicaciones de gestión reales.
           </p>
         </div>
 
@@ -158,9 +193,9 @@ export default function Projects() {
             <p style={{ color: "var(--muted)" }}>Vuelve pronto, iré publicando más trabajos.</p>
           </div>
         ) : (
-          <div className="projects-grid">
+          <div className="projects-grid modern-grid">
             {filtered.map((p) => (
-              <article key={p.id} className="project-card reveal">
+             <article key={p.id}  className={`project-card reveal ${p.featured ? "featured-project" : ""}`}>
                 <div className="project-media">
                   <img
                     className="project-img"

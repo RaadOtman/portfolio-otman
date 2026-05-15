@@ -96,17 +96,16 @@ export default function Hero() {
       <div className="container">
         <div className="hero-grid">
           <div className="hero-left card-glass">
-            <span className="badge">Desarrollador Web Junior</span>
-            <h1 className="hero-title">
-              Hola, soy <span className="grad">Otman Raad</span>
-            </h1>
-            <p className="hero-sub">
-              Construyo interfaces limpias y APIs sencillas con <b>HTML • CSS • JavaScript • React • PHP/Node • MySQL</b>.
-              Me enfoco en <i>accesibilidad</i>, <i>rendimiento</i> y buenas prácticas.
-            </p>
+            <span className="badge">Full Stack Developer Junior</span>
+              <h1 className="hero-title">
+                  Creo aplicaciones web modernas con enfoque en <span className="grad">producto real</span>
+              </h1>
+                <p className="hero-sub">
+                Soy Otman Raad, desarrollador web junior. Trabajo con React, TypeScript, Node.js y MySQL para crear interfaces cuidadas, dashboards y aplicaciones de gestión como PADEX, Futbol Web App y proyectos web para clientes.
+                </p>
             <div className="hero-cta">
-              <a className="btn" href="#projects">🚀 Ver proyectos</a>
-              <button className="btn ghost" onClick={goContact}>📬 Contacto</button>
+              <a className="btn" href="#projects">Ver proyectos</a>
+              <button className="btn ghost" onClick={goContact}>Contactar</button>
               <div className="hero-socials"><Socials /></div>
             </div>
           </div>

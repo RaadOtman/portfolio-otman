@@ -10,7 +10,8 @@ import {
   FaPhp,
   FaReact,
 } from "react-icons/fa";
-import { FiCheckCircle, FiCode, FiDownload, FiExternalLink, FiUser } from "react-icons/fi";
+import { FiCode, FiUser } from "react-icons/fi";
+import { handleGlowMove } from "../utils/mouseGlow";
 
 export default function About() {
   useEffect(() => {
@@ -71,7 +72,7 @@ export default function About() {
 
         <div className="about-grid">
           {/* Foto y tags */}
-          <aside className="about-photo-card reveal">
+          <aside className="about-photo-card glow-card reveal" onMouseMove={handleGlowMove}>
             <div className="about-photo-wrap">
               <img
                 className="about-photo"
@@ -105,7 +106,7 @@ export default function About() {
           </aside>
 
           {/* Texto y botones */}
-          <article className="about-content reveal">
+          <article className="about-content glow-card reveal" onMouseMove={handleGlowMove}>
             <h3 className="about-subtitle">
               <FiUser style={{ marginRight: 6 }} /> Desarrollador Web Junior
             </h3>

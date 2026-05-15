@@ -5,6 +5,7 @@ import {
   FiCheckCircle, FiAlertCircle, FiPhone, FiMapPin
 } from "react-icons/fi";
 import Socials from "./Socials";
+import { handleGlowMove } from "../utils/mouseGlow";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle"|"sending"|"ok"|"error">("idle");
@@ -68,7 +69,7 @@ export default function Contact() {
         setStatus("ok");
         form.reset();
       } else {
-        const j = await res.json().catch(() => ({} as any));
+        const j = await res.json().catch(() => ({} as { error?: string }));
         setStatus("error");
         setMsg(j?.error || "No se pudo enviar el mensaje. Inténtalo de nuevo.");
       }
@@ -88,7 +89,7 @@ export default function Contact() {
         </div>
 
         <div className="contact-grid">
-          <aside className="contact-info card reveal">
+          <aside className="contact-info card glow-card reveal" onMouseMove={handleGlowMove}>
             <div className="info-block">
               <FiMail className="info-ico" />
               <div>
@@ -144,7 +145,7 @@ export default function Contact() {
                   <button className="btn ghost" onClick={() => setStatus("idle")}>Volver al formulario</button>
                 </div>
               ) : (
-                <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <form className="contact-form glow-card" onMouseMove={handleGlowMove} onSubmit={handleSubmit} noValidate>
                   
                   <input type="text" name="_gotcha" style={{ display:"none" }} tabIndex={-1} aria-hidden="true" />
 

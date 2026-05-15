@@ -23,6 +23,7 @@ import {
   FiGlobe,
   FiBookOpen,
 } from "react-icons/fi";
+import { handleGlowMove } from "../utils/mouseGlow";
 
 export default function Experience() {
   useEffect(() => {
@@ -86,7 +87,7 @@ export default function Experience() {
         </div>
 
         <div className="skills-grid" style={{ marginTop: 24 }}>
-          <article className="skill-card reveal">
+          <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
                 <FiLayers /> Frontend
@@ -106,7 +107,7 @@ export default function Experience() {
             </div>
           </article>
 
-          <article className="skill-card reveal">
+          <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
                 <FiServer /> Backend & APIs
@@ -125,7 +126,7 @@ export default function Experience() {
             </div>
           </article>
 
-          <article className="skill-card reveal">
+          <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
                 <FiDatabase /> Bases de datos
@@ -144,7 +145,7 @@ export default function Experience() {
             </div>
           </article>
 
-          <article className="skill-card reveal">
+          <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
                 <FiTool /> Entornos y plataformas
@@ -166,7 +167,7 @@ export default function Experience() {
           </article>
         </div>
 
-        <div className="tools-card card reveal" style={{ marginTop: 24 }}>
+        <div className="tools-card card glow-card reveal" style={{ marginTop: 24 }} onMouseMove={handleGlowMove}>
           <div className="tools-head">
             <div className="pill soft">
               <FiGitBranch /> Workflow de desarrollo

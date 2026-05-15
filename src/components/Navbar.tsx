@@ -47,7 +47,7 @@ export default function Navbar() {
           <li><a className="nav-link active" href="#top" onClick={() => { scrollTop(); setOpen(false); }}>Inicio</a></li>
           <li><a className="nav-link" href="#about" onClick={() => setOpen(false)}>Sobre mí</a></li>
           <li><a className="nav-link" href="#projects" onClick={() => setOpen(false)}>Proyectos</a></li>
-          <li><a className="nav-link" href="#skills" onClick={() => setOpen(false)}>Skills</a></li>
+          <li><a className="nav-link" href="#experience" onClick={() => setOpen(false)}>Stack</a></li>
           <li><a className="nav-link contact-link" href="#contact" onClick={goContact}>Contacto</a></li>
         </ul>
       </div>

@@ -1,7 +1,10 @@
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useI18n } from "../i18n";
 
 export default function Footer() {
+  const { t } = useI18n();
+
   return (
     <footer className="footer">
       <div className="container footer-inner">
@@ -11,8 +14,7 @@ export default function Footer() {
           </span>
 
           <p className="footer-text">
-            Portfolio personal enfocado en desarrollo web moderno, aplicaciones full stack
-            y experiencia de usuario.
+            {t.footer.text}
           </p>
         </div>
 
@@ -43,7 +45,7 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <small>
-          © {new Date().getFullYear()} Otman Raad · Full Stack Developer Junior
+          © {new Date().getFullYear()} Otman Raad · {t.footer.role}
         </small>
 
         <small className="footer-made">

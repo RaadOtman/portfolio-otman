@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { handleGlowMove } from "../utils/mouseGlow";
+import { useI18n } from "../i18n";
 
 type Project = {
   id: string;
@@ -64,11 +65,22 @@ const ALL_PROJECTS: Project[] = [
 const CATEGORIES = ["Todos", "Frontend", "Full Stack", "Otro"] as const;
 
 export default function Projects() {
+  const { lang, t } = useI18n();
   const [activeCat, setActiveCat] = useState<typeof CATEGORIES[number]>("Todos");
   const [q, setQ] = useState("");
 
-  const featuredProject = useMemo(() => ALL_PROJECTS.find((p) => p.featured), []);
-  const normalProjects = useMemo(() => ALL_PROJECTS.filter((p) => !p.featured), []);
+  const translatedProjects = useMemo(
+    () =>
+      ALL_PROJECTS.map((project) => ({
+        ...project,
+        title: t.projects.items[project.id as keyof typeof t.projects.items].title,
+        desc: t.projects.items[project.id as keyof typeof t.projects.items].desc,
+      })),
+    [t]
+  );
+
+  const featuredProject = useMemo(() => translatedProjects.find((p) => p.featured), [translatedProjects]);
+  const normalProjects = useMemo(() => translatedProjects.filter((p) => !p.featured), [translatedProjects]);
 
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#projects .reveal"));
@@ -140,56 +152,58 @@ export default function Projects() {
     };
   }, [normalProjects]);
 
+  const categoryLabel = (cat: typeof CATEGORIES[number]) =>
+    cat === "Todos" ? t.projects.all : t.projects.categories[cat];
+
   return (
     <section id="projects" className="section">
       <div className="container">
-        <div className="projects-head reveal">
-          <span className="overline">Featured Work</span>
+        <div className="projects-head reveal lang-fade" key={`projects-head-${lang}`}>
+          <span className="overline">{t.projects.overline}</span>
 
           <h2 className="projects-title">
-            Aplicaciones reales, diseño moderno y desarrollo full stack
+            {t.projects.title}
           </h2>
 
           <p className="projects-intro">
-            Una selección de proyectos donde combino frontend, backend, bases de datos,
-            dashboards e interfaces cuidadas para crear productos web con enfoque real.
+            {t.projects.intro}
           </p>
         </div>
 
         {featuredProject && (
           <article className="featured-case glow-card reveal" onMouseMove={handleGlowMove}>
             <div className="featured-case-content">
-              <span className="case-label">Proyecto principal · TFG DAW</span>
+              <div className="case-topline">
+                <span className="case-label">{t.projects.featuredLabel}</span>
+                <div className="case-badges">
+                  {t.projects.featuredBadges.map((badge) => (
+                    <span key={badge}>{badge}</span>
+                  ))}
+                </div>
+              </div>
 
-              <h3>{featuredProject.title}</h3>
+              <h3>{t.projects.featuredTitle}</h3>
 
               <p>
-                Plataforma SaaS orientada a clubes deportivos para gestionar reservas,
-                pistas, usuarios y paneles de administración. Es mi proyecto más completo:
-                combina frontend moderno, backend con API REST, autenticación y base de
-                datos relacional.
+                {t.projects.featuredText}
               </p>
 
+              <div className="case-metrics">
+                {t.projects.metrics.map(([value, label]) => (
+                  <div key={`${value}-${label}`}>
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+
               <div className="case-highlights">
-                <div>
-                  <strong>Auth</strong>
-                  <span>JWT y rutas protegidas</span>
-                </div>
-
-                <div>
-                  <strong>Admin</strong>
-                  <span>Panel de gestión</span>
-                </div>
-
-                <div>
-                  <strong>Reservas</strong>
-                  <span>Control de pistas y horarios</span>
-                </div>
-
-                <div>
-                  <strong>DB</strong>
-                  <span>MySQL relacional</span>
-                </div>
+                {t.projects.highlights.map(([value, label]) => (
+                  <div key={`${value}-${label}`}>
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
 
               <div className="project-tech">
@@ -201,19 +215,25 @@ export default function Projects() {
               <div className="project-actions">
                 {featuredProject.liveUrl && featuredProject.liveUrl !== "#" && (
                   <a className="btn" href={featuredProject.liveUrl} target="_blank" rel="noreferrer">
-                    Ver demo
+                    {t.projects.demo}
                   </a>
                 )}
 
                 {featuredProject.codeUrl && (
                   <a className="btn ghost" href={featuredProject.codeUrl} target="_blank" rel="noreferrer">
-                    Ver código
+                    {t.projects.code}
                   </a>
                 )}
               </div>
             </div>
 
             <div className="featured-case-media">
+              <div className="case-architecture">
+                <span>{t.projects.architectureTitle}</span>
+                {t.projects.architectureItems.map((item) => (
+                  <strong key={item}>{item}</strong>
+                ))}
+              </div>
               <img src={featuredProject.img} alt={featuredProject.title} loading="lazy" />
             </div>
           </article>
@@ -221,8 +241,8 @@ export default function Projects() {
 
         <div className="projects-subhead reveal">
           <div>
-            <span className="overline">Otros proyectos</span>
-            <h3>Más trabajos que completan mi perfil</h3>
+            <span className="overline">{t.projects.othersOverline}</span>
+            <h3>{t.projects.othersTitle}</h3>
           </div>
         </div>
 
@@ -235,7 +255,7 @@ export default function Projects() {
                 onClick={() => setActiveCat(cat)}
                 aria-pressed={activeCat === cat}
               >
-                {cat}
+                {categoryLabel(cat)}
                 <span className="chip-count">{counts[cat]}</span>
               </button>
             ))}
@@ -251,15 +271,15 @@ export default function Projects() {
 
               <input
                 className="search-input"
-                placeholder="Buscar por texto o tecnología…"
+                placeholder={t.projects.search}
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
               />
             </div>
 
             {q && (
-              <button className="filter-chip clear" onClick={() => setQ("")} aria-label="Limpiar búsqueda">
-                Limpiar
+              <button className="filter-chip clear" onClick={() => setQ("")} aria-label={t.projects.clear}>
+                {t.projects.clear}
               </button>
             )}
           </div>
@@ -267,9 +287,9 @@ export default function Projects() {
 
         {filtered.length === 0 ? (
           <div className="card reveal" style={{ marginTop: 16, textAlign: "center", padding: 24 }}>
-            <h3 style={{ marginTop: 0 }}>Sin resultados</h3>
+            <h3 style={{ marginTop: 0 }}>{t.projects.noResultsTitle}</h3>
             <p style={{ color: "var(--muted)", marginBottom: 0 }}>
-              No hay proyectos que coincidan con ese filtro.
+              {t.projects.noResultsText}
             </p>
           </div>
         ) : (
@@ -284,7 +304,7 @@ export default function Projects() {
                 <div className="project-body">
                   <div className="project-title-row">
                     <h3 className="project-title">{p.title}</h3>
-                    <span className="tag">{p.category}</span>
+                    <span className="tag">{t.projects.categories[p.category]}</span>
                   </div>
 
                   <p className="project-desc">{p.desc}</p>
@@ -298,13 +318,13 @@ export default function Projects() {
                   <div className="project-actions">
                     {p.liveUrl && p.liveUrl !== "#" && (
                       <a className="btn" href={p.liveUrl} target="_blank" rel="noreferrer">
-                        Ver sitio
+                        {t.projects.viewSite}
                       </a>
                     )}
 
                     {p.codeUrl && p.codeUrl !== "#" && (
                       <a className="btn ghost" href={p.codeUrl} target="_blank" rel="noreferrer">
-                        Código
+                        {t.projects.code}
                       </a>
                     )}
                   </div>

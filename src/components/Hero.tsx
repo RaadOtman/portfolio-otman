@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import Socials from "./Socials";
 import { handleGlowMove } from "../utils/mouseGlow";
+import { useI18n } from "../i18n";
 
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { lang, t } = useI18n();
 
   const goContact = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -82,56 +84,46 @@ export default function Hero() {
         <div className="hero-grid">
 
           {/* LEFT */}
-          <div className="hero-left hero-panel glow-card" onMouseMove={handleGlowMove}>
+          <div className="hero-left hero-panel glow-card lang-fade" key={`hero-${lang}`} onMouseMove={handleGlowMove}>
 
             <div className="hero-badge">
-              Full Stack Developer Junior
+              {t.hero.badge}
             </div>
 
             <h1 className="hero-title">
-              Desarrollo aplicaciones web
-              <span className="grad"> modernas</span>
+              {t.hero.titleA}
+              <span className="grad">{t.hero.titleGradA}</span>
               <br />
-              con enfoque
-              <span className="grad"> full stack</span>
+              {t.hero.titleB}
+              <span className="grad">{t.hero.titleGradB}</span>
             </h1>
 
             <p className="hero-sub">
-              React · TypeScript · Node.js · MySQL · APIs REST · UX/UI
+              {t.hero.sub}
             </p>
 
             <p className="hero-text">
-              Desarrollo proyectos reales centrados en experiencia de usuario,
-              arquitectura limpia y diseño moderno. Actualmente construyendo
-              plataformas como PADEX y aplicaciones de gestión completas.
+              {t.hero.text}
             </p>
 
             <div className="hero-mini-stats">
 
-              <div className="hero-stat">
-                <strong>4+</strong>
-                <span>Proyectos reales</span>
-              </div>
-
-              <div className="hero-stat">
-                <strong>Full Stack</strong>
-                <span>Frontend + Backend</span>
-              </div>
-
-              <div className="hero-stat">
-                <strong>TFG SaaS</strong>
-                <span>PADEX Platform</span>
-              </div>
+              {t.hero.stats.map(([value, label]) => (
+                <div className="hero-stat" key={`${value}-${label}`}>
+                  <strong>{value}</strong>
+                  <span>{label}</span>
+                </div>
+              ))}
 
             </div>
 
             <div className="hero-cta">
               <a className="btn" href="#projects">
-                Ver proyectos
+                {t.hero.primaryCta}
               </a>
 
               <button className="btn ghost" onClick={goContact}>
-                Contactar
+                {t.hero.secondaryCta}
               </button>
 
               <div className="hero-socials">
@@ -160,9 +152,27 @@ export default function Hero() {
               <div className="hero-image-wrap">
                 <img
                   className="hero-photo"
-                  src="/img/otman-hero.jpg"
-                  alt="Otman Raad"
+                  src="/img/padex-mockup.png"
+                  alt="PADEX dashboard"
                 />
+              </div>
+
+              <div className="hero-product-panel">
+                <span>{t.hero.cockpit.label}</span>
+                <strong>{t.hero.cockpit.title}</strong>
+                <div className="hero-product-metrics">
+                  <small>{t.hero.cockpit.metricA}</small>
+                  <small>{t.hero.cockpit.metricB}</small>
+                  <small>{t.hero.cockpit.metricC}</small>
+                </div>
+              </div>
+
+              <div className="hero-profile-card float-soft">
+                <img src="/img/otman-hero.jpg" alt={t.hero.profile.name} />
+                <div>
+                  <strong>{t.hero.profile.name}</strong>
+                  <span>{t.hero.profile.role}</span>
+                </div>
               </div>
 
               <div className="hero-glow"></div>

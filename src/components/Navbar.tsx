@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useI18n } from "../i18n";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { lang, t, toggleLang } = useI18n();
 
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -44,11 +46,25 @@ export default function Navbar() {
 
       <div id="primary-navigation" className={`nav-right ${open ? "show" : ""}`}>
         <ul className="nav-links">
-          <li><a className="nav-link active" href="#top" onClick={() => { scrollTop(); setOpen(false); }}>Inicio</a></li>
-          <li><a className="nav-link" href="#about" onClick={() => setOpen(false)}>Sobre mí</a></li>
-          <li><a className="nav-link" href="#projects" onClick={() => setOpen(false)}>Proyectos</a></li>
-          <li><a className="nav-link" href="#experience" onClick={() => setOpen(false)}>Stack</a></li>
-          <li><a className="nav-link contact-link" href="#contact" onClick={goContact}>Contacto</a></li>
+          <li><a className="nav-link active" href="#top" onClick={() => { scrollTop(); setOpen(false); }}>{t.nav.home}</a></li>
+          <li><a className="nav-link" href="#about" onClick={() => setOpen(false)}>{t.nav.about}</a></li>
+          <li><a className="nav-link" href="#projects" onClick={() => setOpen(false)}>{t.nav.projects}</a></li>
+          <li><a className="nav-link" href="#experience" onClick={() => setOpen(false)}>{t.nav.stack}</a></li>
+          <li><a className="nav-link contact-link" href="#contact" onClick={goContact}>{t.nav.contact}</a></li>
+          <li>
+            <button
+              className="lang-toggle"
+              type="button"
+              aria-label={t.nav.toggleLabel}
+              onClick={() => {
+                toggleLang();
+                setOpen(false);
+              }}
+            >
+              <span className={lang === "es" ? "active" : ""}>ES</span>
+              <span className={lang === "en" ? "active" : ""}>EN</span>
+            </button>
+          </li>
         </ul>
       </div>
     </div>

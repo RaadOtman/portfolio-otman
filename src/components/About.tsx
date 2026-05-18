@@ -1,5 +1,5 @@
 // src/components/About.tsx
-import cvUrl from "@/assets/cv/otman-raad-cv.pdf";
+import cvUrl from "@/assets/cv/Otman_Raad_Frontend_FullStack.pdf";
 import { useEffect } from "react";
 import {
   FaCss3Alt,
@@ -12,8 +12,11 @@ import {
 } from "react-icons/fa";
 import { FiCode, FiUser } from "react-icons/fi";
 import { handleGlowMove } from "../utils/mouseGlow";
+import { useI18n } from "../i18n";
 
 export default function About() {
+  const { t } = useI18n();
+
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#about .reveal"));
     if (els.length === 0) return;
@@ -61,12 +64,12 @@ export default function About() {
       <div className="container">
         {/* Encabezado */}
         <div className="reveal">
-          <span className="overline">Sobre mí</span>
-          <h2 className="about-title">Desarrollo web con mentalidad de producto</h2>
+          <span className="overline">{t.about.overline}</span>
+          <h2 className="about-title">{t.about.title}</h2>
             <p className="about-intro">
-              Soy Otman Raad, desarrollador web junior formado en Desarrollo de Aplicaciones Web. Me centro en crear aplicaciones claras, funcionales y con una experiencia visual cuidada, combinando frontend, backend y bases de datos.
+              {t.about.introA}
               <br /><br />
-              Actualmente trabajo con React, TypeScript, Node.js y MySQL, y estoy construyendo proyectos como PADEX, Futbol Web App y sitios web orientados a clientes reales. Mi objetivo es seguir creciendo como desarrollador, aportar desde el primer día y aprender dentro de un equipo profesional.
+              {t.about.introB}
           </p>
         </div>
 
@@ -108,94 +111,63 @@ export default function About() {
           {/* Texto y botones */}
           <article className="about-content glow-card reveal" onMouseMove={handleGlowMove}>
             <h3 className="about-subtitle">
-              <FiUser style={{ marginRight: 6 }} /> Desarrollador Web Junior
+              <FiUser style={{ marginRight: 6 }} /> {t.about.subtitle}
             </h3>
             <p>
-              Actualmente me especializo en la creación de aplicaciones web con enfoque full stack.
-              Me gusta mantener un código limpio, organizado y fácil de mantener.
+              {t.about.body}
             </p>
 
             <ul className="with-icons">
               <li>
-                <FiCode className="li-ico" /> Diseño y desarrollo de sitios web responsive
+                <FiCode className="li-ico" /> {t.about.bullets[0]}
               </li>
               <li>
-                <FaReact className="li-ico" /> Interfaces dinámicas con React
+                <FaReact className="li-ico" /> {t.about.bullets[1]}
               </li>
               <li>
-                <FaPhp className="li-ico" /> Back-end en PHP o Node.js
+                <FaPhp className="li-ico" /> {t.about.bullets[2]}
               </li>
               <li>
-                <FaDatabase className="li-ico" /> Modelado y gestión de bases de datos MySQL
+                <FaDatabase className="li-ico" /> {t.about.bullets[3]}
               </li>
               <li>
-                <FaGitAlt className="li-ico" /> Control de versiones con Git y GitHub
+                <FaGitAlt className="li-ico" /> {t.about.bullets[4]}
               </li>
             </ul>
 
             {/* Estadísticas */}
             <div className="about-stats">
-             <div className="stat">
-              <div className="stat-num">3</div>
-              <div className="stat-label">Proyectos principales</div>
-            </div>
-
-              <div className="stat">
-              <div className="stat-num">Full Stack</div>
-               <div className="stat-label">Frontend + Backend</div>
-               </div>
-          <div className="stat">
-            <div className="stat-num">React</div>
-            <div className="stat-label">Stack principal</div>
-            </div>
+              {t.about.stats.map(([value, label]) => (
+                <div className="stat" key={`${value}-${label}`}>
+                  <div className="stat-num">{value}</div>
+                  <div className="stat-label">{label}</div>
+                </div>
+              ))}
             </div>
 
             {/* Botones de CV */}
             <div className="about-ctas">
   <a className="btn ghost" href={cvUrl} target="_blank" rel="noopener noreferrer">
-    Ver CV
+    {t.about.cvView}
   </a>
 
   <a className="btn btn-cv" href={cvUrl} download="Otman-Raad-CV.pdf">
-    Descargar CV
+    {t.about.cvDownload}
   </a>
 </div>
 
             {/* Timeline */}
             <div className="about-timeline reveal">
-              <div className="tl-item">
-                <div className="tl-period">2025</div>
-                <div className="tl-dot"></div>
-                <div className="tl-body">
-                  <div className="tl-title">Finalizando DAW</div>
-                  <div className="tl-note">Grado Superior en Desarrollo de Aplicaciones Web.</div>
-                </div>
-              </div>
-
-              <div className="tl-item">
-                <div className="tl-period">2024</div>
-                <div className="tl-dot"></div>
-                <div className="tl-body">
-                  <div className="tl-title">Proyectos personales</div>
-                  <div className="tl-note">
-                    Aplicaciones web, portfolio profesional y primeros trabajos en React.
+              {t.about.timeline.map(([period, title, note]) => (
+                <div className="tl-item" key={`${period}-${title}`}>
+                  <div className="tl-period">{period}</div>
+                  <div className="tl-dot"></div>
+                  <div className="tl-body">
+                    <div className="tl-title">{title}</div>
+                    <div className="tl-note">{note}</div>
                   </div>
                 </div>
-              </div>
-
-              <div className="tl-item">
-                <div className="tl-period">2019 – 2025</div>
-                <div className="tl-dot"></div>
-                <div className="tl-body">
-                  <div className="tl-title">Gerente de restauración moderna</div>
-                  <div className="tl-note">
-                    Dirección y gestión de equipos en entornos de alta exigencia. Desarrollo de
-                    habilidades en liderazgo, planificación, organización y resolución de
-                    incidencias, que hoy aplico al trabajo en equipo y a la gestión de proyectos
-                    web.
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </article>
         </div>

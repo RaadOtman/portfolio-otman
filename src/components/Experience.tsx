@@ -24,8 +24,11 @@ import {
   FiBookOpen,
 } from "react-icons/fi";
 import { handleGlowMove } from "../utils/mouseGlow";
+import { useI18n } from "../i18n";
 
 export default function Experience() {
+  const { t } = useI18n();
+
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>("#experience .reveal"));
     if (els.length === 0) return;
@@ -73,16 +76,14 @@ export default function Experience() {
     <section id="experience" className="section">
       <div className="container">
         <div className="reveal">
-          <span className="overline">Stack & Workflow</span>
+          <span className="overline">{t.stack.overline}</span>
 
           <h2 className="skills-title">
-            Tecnologías que uso para construir productos web
+            {t.stack.title}
           </h2>
 
           <p className="skills-intro">
-            Trabajo con frontend, backend, bases de datos y herramientas de despliegue para crear
-            aplicaciones completas. Mi objetivo no es solo que una web funcione, sino que tenga una
-            buena estructura, sea mantenible y transmita una experiencia visual cuidada.
+            {t.stack.intro}
           </p>
         </div>
 
@@ -90,9 +91,9 @@ export default function Experience() {
           <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
-                <FiLayers /> Frontend
+                <FiLayers /> {t.stack.cards[0][0]}
               </div>
-              <p>Interfaces modernas, responsive, accesibilidad y experiencia de usuario.</p>
+              <p>{t.stack.cards[0][1]}</p>
             </header>
 
             <div className="chips">
@@ -110,9 +111,9 @@ export default function Experience() {
           <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
-                <FiServer /> Backend & APIs
+                <FiServer /> {t.stack.cards[1][0]}
               </div>
-              <p>APIs, autenticación, validaciones y lógica de aplicación.</p>
+              <p>{t.stack.cards[1][1]}</p>
             </header>
 
             <div className="chips">
@@ -129,9 +130,9 @@ export default function Experience() {
           <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
-                <FiDatabase /> Bases de datos
+                <FiDatabase /> {t.stack.cards[2][0]}
               </div>
-              <p>Modelado, relaciones, consultas y persistencia de datos.</p>
+              <p>{t.stack.cards[2][1]}</p>
             </header>
 
             <div className="chips">
@@ -148,9 +149,9 @@ export default function Experience() {
           <article className="skill-card glow-card reveal" onMouseMove={handleGlowMove}>
             <header className="skill-card-head">
               <div className="pill grad">
-                <FiTool /> Entornos y plataformas
+                <FiTool /> {t.stack.cards[3][0]}
               </div>
-              <p>Herramientas que he usado en proyectos, prácticas y despliegues.</p>
+              <p>{t.stack.cards[3][1]}</p>
             </header>
 
             <div className="chips">
@@ -170,12 +171,9 @@ export default function Experience() {
         <div className="tools-card card glow-card reveal" style={{ marginTop: 24 }} onMouseMove={handleGlowMove}>
           <div className="tools-head">
             <div className="pill soft">
-              <FiGitBranch /> Workflow de desarrollo
+              <FiGitBranch /> {t.stack.workflowTitle}
             </div>
-            <p>
-              Control de versiones, organización del proyecto y herramientas que utilizo para
-              trabajar de forma más profesional.
-            </p>
+            <p>{t.stack.workflowText}</p>
           </div>
 
           <div className="tools-grid">
@@ -227,40 +225,16 @@ export default function Experience() {
         </div>
 
         <div className="about-timeline reveal" style={{ marginTop: 24 }}>
-          <div className="tl-item">
-            <div className="tl-period">Actualidad</div>
-            <div className="tl-dot"></div>
-            <div className="tl-body">
-              <div className="tl-title">Portfolio y proyectos full stack</div>
-              <div className="tl-note">
-                PADEX, Futbol Web App, peluquería web y mejoras continuas del portfolio personal.
+          {t.stack.timeline.map(([period, title, note]) => (
+            <div className="tl-item" key={`${period}-${title}`}>
+              <div className="tl-period">{period}</div>
+              <div className="tl-dot"></div>
+              <div className="tl-body">
+                <div className="tl-title">{title}</div>
+                <div className="tl-note">{note}</div>
               </div>
             </div>
-          </div>
-
-          <div className="tl-item">
-            <div className="tl-period">DAW</div>
-            <div className="tl-dot"></div>
-            <div className="tl-body">
-              <div className="tl-title">Desarrollo de Aplicaciones Web</div>
-              <div className="tl-note">
-                Frontend, backend, bases de datos, despliegues, documentación técnica y proyectos
-                prácticos.
-              </div>
-            </div>
-          </div>
-
-          <div className="tl-item">
-            <div className="tl-period">Extra</div>
-            <div className="tl-dot"></div>
-            <div className="tl-body">
-              <div className="tl-title">Exploración de entornos profesionales</div>
-              <div className="tl-note">
-                Moodle, DataFlex, MySQL, XAMPP, Apache, GitFlow y herramientas usadas en contextos
-                más cercanos a empresa.
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

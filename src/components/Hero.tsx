@@ -137,21 +137,21 @@ export default function Hero() {
 
             <div className="hero-showcase" ref={wrapRef}>
 
-              <div className="hero-floating-card react-card float-soft">
+              <div className="hero-floating-card hero-tech-badge react-card float-soft">
                 React
               </div>
 
-              <div className="hero-floating-card node-card float-soft">
+              <div className="hero-floating-card hero-tech-badge node-card float-soft">
                 Node.js
               </div>
 
-              <div className="hero-floating-card mysql-card float-soft">
+              <div className="hero-floating-card hero-tech-badge mysql-card float-soft">
                 MySQL
               </div>
 
               <div className="hero-image-wrap">
                 <img
-                  className="hero-photo"
+                  className="hero-photo hero-padex-mockup"
                   src="/img/padex-mockup.png"
                   alt="PADEX dashboard"
                 />
